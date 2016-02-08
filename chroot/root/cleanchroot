@@ -1,0 +1,17 @@
+#
+# This script facilitates cleaning up the chroot environment so we can exit more easily without
+# the filesystem having dangling mount points (oops!) 
+#
+#!/bin/bash
+
+rm /var/lib/dbus/machine-id
+dpkg-divert --rename --remove /sbin/initctl
+
+apt-get clean
+rm -rf /tmp/*
+
+umount -lf /proc
+umount -lf /sys
+umount -lf /dev/pts
+
+echo "Everything should be unmounted. DOUBLE CHECK BEFORE EXITING:"
