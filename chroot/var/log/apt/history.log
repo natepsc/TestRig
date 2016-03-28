@@ -94,8 +94,3 @@ Start-Date: 2015-12-11  21:14:15
 Commandline: apt-get remove libpng12-0:amd64
 Remove: libpng12-0:amd64 (1.2.51-0ubuntu3)
 End-Date: 2015-12-11  21:14:18
-
-Start-Date: 2016-01-05  18:08:20
-Commandline: apt-get install encfs
-Install: libboost-system1.55.0:amd64 (1.55.0+dfsg-3ubuntu2, automatic), fuse:amd64 (2.9.2-4ubuntu4, automatic), libssl1.0.0:amd64 (1.0.1f-1ubuntu11, automatic), libboost-serialization1.55.0:amd64 (1.55.0+dfsg-3ubuntu2, automatic), encfs:amd64 (1.7.4-5), librlog5:amd64 (1.4-2.1, automatic), libfuse2:amd64 (2.9.2-4ubuntu4, automatic)
-End-Date: 2016-01-05  18:09:00

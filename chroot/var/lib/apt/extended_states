@@ -98,27 +98,3 @@ Package: init-system-helpers
 Architecture: amd64
 Auto-Installed: 1
 
-Package: libboost-system1.55.0
-Architecture: amd64
-Auto-Installed: 1
-
-Package: fuse
-Architecture: amd64
-Auto-Installed: 1
-
-Package: libssl1.0.0
-Architecture: amd64
-Auto-Installed: 1
-
-Package: libboost-serialization1.55.0
-Architecture: amd64
-Auto-Installed: 1
-
-Package: librlog5
-Architecture: amd64
-Auto-Installed: 1
-
-Package: libfuse2
-Architecture: amd64
-Auto-Installed: 1
-

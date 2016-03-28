@@ -578,35 +578,6 @@ Description: Pluggable Authentication Modules for PAM - helper binaries
 Homepage: http://pam.sourceforge.net/
 Original-Maintainer: Steve Langasek <vorlon@debian.org>
 
-Package: libboost-serialization1.55.0
-Status: install ok installed
-Priority: optional
-Section: libs
-Installed-Size: 835
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Architecture: amd64
-Multi-Arch: same
-Source: boost1.55
-Version: 1.55.0+dfsg-3ubuntu2
-Depends: libc6 (>= 2.14), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.9)
-Pre-Depends: multiarch-support
-Description: serialization library for C++
- This package forms part of the Boost C++ Libraries collection,
- containing the following functionalities:
- .
-  * proper restoration of pointers to shared data
-  * serialization of STL containers and other commonly used templates
-  * data portability - streams of bytes created on one platform should
-    be readable on any other
-  * archive interface must be rich enough to permit the creation of an
-    archive that presents serialized data as XML in a useful manner
- .
- Here, "serialization" means the reversible deconstruction of an
- arbitrary set of C++ data structures to a sequence of bytes.
- archive: to refer to a specific rendering of this stream of bytes.
-Homepage: http://www.boost.org/libs/serialization/
-Original-Maintainer: Debian Boost Team <pkg-boost-devel@lists.alioth.debian.org>
-
 Package: grep
 Essential: yes
 Status: install ok installed
@@ -667,31 +638,6 @@ Description: high level tools to configure network interfaces
  interface definitions in the file /etc/network/interfaces.
 Original-Maintainer: Andrew Shadura <andrewsh@debian.org>
 
-Package: libboost-system1.55.0
-Status: install ok installed
-Priority: optional
-Section: libs
-Installed-Size: 84
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Architecture: amd64
-Multi-Arch: same
-Source: boost1.55
-Version: 1.55.0+dfsg-3ubuntu2
-Depends: libc6 (>= 2.4), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1)
-Pre-Depends: multiarch-support
-Description: Operating system (e.g. diagnostics support) library
- This package forms part of the Boost C++ Libraries collection.
- .
- The Boost System library provides simple, light-weight error_code
- objects that encapsulate system-specific error code values, yet also
- provide access to more abstract and portable error conditions via
- error_condition objects. Because error_code objects can represent
- errors from sources other than the operating system, including
- user-defined sources, each error_code and error_condition has an
- associated error_category.
-Homepage: http://www.boost.org/libs/system/
-Original-Maintainer: Debian Boost Team <pkg-boost-devel@lists.alioth.debian.org>
-
 Package: linux-headers-4.1.0.web10g+
 Status: install ok installed
 Priority: optional
@@ -708,7 +654,7 @@ Description: Linux kernel headers for 4.1.0.web10g+ on amd64
 Homepage: http://www.kernel.org/
 
 Package: libssl1.0.0
-Status: install ok installed
+Status: deinstall ok config-files
 Priority: important
 Section: libs
 Installed-Size: 2978
@@ -717,6 +663,7 @@ Architecture: amd64
 Multi-Arch: same
 Source: openssl
 Version: 1.0.1f-1ubuntu11
+Config-Version: 1.0.1f-1ubuntu11
 Depends: libc6 (>= 2.14), debconf (>= 0.5) | debconf-2.0
 Pre-Depends: multiarch-support
 Description: Secure Sockets Layer toolkit - shared libraries
@@ -1430,7 +1377,7 @@ Homepage: http://gondor.apana.org.au/~herbert/dash/
 Original-Maintainer: Gerrit Pape <pape@smarden.org>
 
 Package: libfuse2
-Status: install ok installed
+Status: deinstall ok config-files
 Priority: optional
 Section: libs
 Installed-Size: 321
@@ -1439,6 +1386,7 @@ Architecture: amd64
 Multi-Arch: same
 Source: fuse
 Version: 2.9.2-4ubuntu4
+Config-Version: 2.9.2-4ubuntu4
 Depends: libc6 (>= 2.17)
 Pre-Depends: multiarch-support
 Suggests: fuse
@@ -1765,24 +1713,6 @@ Description: Linux Kernel Device Mapper userspace library
  consistent interface (as opposed to through kernel ioctls).
 Homepage: http://sources.redhat.com/lvm2/
 Original-Maintainer: Debian LVM Team <pkg-lvm-maintainers@lists.alioth.debian.org>
-
-Package: encfs
-Status: install ok installed
-Priority: optional
-Section: utils
-Installed-Size: 1749
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Architecture: amd64
-Version: 1.7.4-5
-Depends: libboost-serialization1.55.0, libboost-system1.55.0, libc6 (>= 2.14), libfuse2 (>= 2.8.1), libgcc1 (>= 1:4.1.1), librlog5, libssl1.0.0 (>= 1.0.0), libstdc++6 (>= 4.6), debconf (>= 0.5) | debconf-2.0, fuse
-Description: encrypted virtual filesystem
- EncFS integrates file system encryption into the Unix(TM) file system.
- Encrypted data is stored within the native file system, thus no
- fixed-size loopback image is required.
- .
- EncFS uses the FUSE kernel driver and library as a backend.
-Original-Maintainer: Eduard Bloch <blade@debian.org>
-Homepage: http://www.arg0.net/encfs
 
 Package: coreutils
 Essential: yes
@@ -2787,20 +2717,44 @@ Description: changehat AppArmor library
 Homepage: http://apparmor.net/
 Original-Maintainer: Kees Cook <kees@debian.org>
 
-Package: librlog5
-Status: install ok installed
-Priority: optional
+Package: user-setup
+Status: deinstall ok config-files
+Priority: extra
+Section: admin
+Installed-Size: 554
+Maintainer: Ubuntu Installer Team <ubuntu-installer@lists.ubuntu.com>
+Architecture: all
+Version: 1.48ubuntu5
+Config-Version: 1.48ubuntu5
+Depends: debconf (>= 0.5) | debconf-2.0, passwd, adduser
+Description: Set up initial user and password
+ This package creates an initial user, using the same code as is
+ responsible for creating the initial user in the installer. It is only
+ likely to be of any use if your system has no non-system users at all.
+Original-Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
+
+Package: libldap-2.4-2
+Status: deinstall ok config-files
+Priority: standard
 Section: libs
-Installed-Size: 84
+Installed-Size: 511
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Architecture: amd64
-Source: rlog
-Version: 1.4-2.1
-Depends: libc6 (>= 2.14), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.6)
-Description: flexible message logging library
- RLog provides a flexible message logging facility for C++ programs and
- libraries. It is meant to be fast enough to live in production code.
-Original-Maintainer: Eduard Bloch <blade@debian.org>
+Multi-Arch: same
+Source: openldap
+Version: 2.4.31-1+nmu2ubuntu12
+Config-Version: 2.4.31-1+nmu2ubuntu12
+Replaces: libldap-2.3-0, libldap2
+Depends: libc6 (>= 2.14), libgcrypt20 (>= 1.6.1), libgnutls-deb0-28 (>= 3.3.0), libgssapi3-heimdal (>= 1.4.0+git20110226), libsasl2-2
+Pre-Depends: multiarch-support
+Conflicts: ldap-utils (<= 2.1.23-1)
+Conffiles:
+ /etc/ldap/ldap.conf 0b3f4d19d88498314478273ce10b0a70
+Description: OpenLDAP libraries
+ These are the run-time libraries for the OpenLDAP (Lightweight Directory
+ Access Protocol) servers and clients.
+Homepage: http://www.openldap.org/
+Original-Maintainer: Debian OpenLDAP Maintainers <pkg-openldap-devel@lists.alioth.debian.org>
 
 Package: sysvinit-utils
 Status: install ok installed
@@ -3110,6 +3064,28 @@ Description: Debian package management system
  For Debian package development tools, install dpkg-dev.
 Homepage: https://wiki.debian.org/Teams/Dpkg
 Original-Maintainer: Dpkg Developers <debian-dpkg@lists.debian.org>
+
+Package: libplymouth4
+Status: deinstall ok config-files
+Priority: optional
+Section: libs
+Installed-Size: 323
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: same
+Source: plymouth
+Version: 0.9.0-0ubuntu9
+Config-Version: 0.9.0-0ubuntu9
+Replaces: plymouth (<< 0.7.0+git20090207-0ubuntu0.1~ppa4)
+Depends: libc6 (>= 2.14), libpng12-0 (>= 1.2.13-4), libudev1 (>= 183)
+Pre-Depends: multiarch-support
+Breaks: casper (= 1.227), mountall (<< 2.8)
+Description: graphical boot animation and logger - shared libraries
+ Plymouth is an application that runs very early in the boot process
+ (even before the root filesystem is mounted!) that provides a graphical
+ boot animation while the boot process happens in the background.
+ .
+ This package contains the shared libraries.
 
 Package: libsqlite3-0
 Status: deinstall ok config-files
@@ -4056,25 +4032,6 @@ Description: SELinux library for manipulating binary security policies
  on binary policies such as customizing policy boolean settings.
 Original-Maintainer: Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>
 Homepage: http://userspace.selinuxproject.org/
-
-Package: fuse
-Status: install ok installed
-Priority: optional
-Section: utils
-Installed-Size: 152
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Architecture: amd64
-Version: 2.9.2-4ubuntu4
-Depends: libc6 (>= 2.14), libfuse2 (= 2.9.2-4ubuntu4), adduser, mount (>= 2.19.1), sed (>= 4), udev | makedev
-Conffiles:
- /etc/fuse.conf 298587592c8444196833f317def414f2
-Description: Filesystem in Userspace
- Filesystem in Userspace (FUSE) is a simple interface for userspace programs to
- export a virtual filesystem to the Linux kernel. It also aims to provide a
- secure method for non privileged users to create and mount their own filesystem
- implementations.
-Homepage: http://fuse.sourceforge.net/
-Original-Maintainer: Daniel Baumann <mail@daniel-baumann.ch>
 
 Package: ubuntu-keyring
 Status: install ok installed

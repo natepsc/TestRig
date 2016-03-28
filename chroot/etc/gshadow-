@@ -46,4 +46,3 @@ systemd-resolve:!::
 systemd-bus-proxy:!::
 messagebus:!::
 netdev:!::
-uuidd:!::

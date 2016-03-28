@@ -87,6 +87,14 @@ Template: debconf/priority
 Value: high
 Owners: debconf
 
+Name: debian-installer/user-setup-udeb/title
+Template: debian-installer/user-setup-udeb/title
+Owners: user-setup
+
+Name: finish-install/progress/user-setup
+Template: finish-install/progress/user-setup
+Owners: user-setup
+
 Name: glibc/disable-screensaver
 Template: glibc/disable-screensaver
 Owners: libc6, libc6:amd64
@@ -155,6 +163,69 @@ Owners: libssl1.0.0:amd64
 Name: libssl1.0.0/restart-services
 Template: libssl1.0.0/restart-services
 Owners: libssl1.0.0:amd64
+
+Name: passwd/auto-login
+Template: passwd/auto-login
+Owners: user-setup
+
+Name: passwd/auto-login-backup
+Template: passwd/auto-login-backup
+Owners: user-setup
+
+Name: passwd/make-user
+Template: passwd/make-user
+Owners: user-setup
+
+Name: passwd/root-login
+Template: passwd/root-login
+Owners: user-setup
+
+Name: passwd/shadow
+Template: passwd/shadow
+Owners: user-setup
+
+Name: passwd/user-default-groups
+Template: passwd/user-default-groups
+Owners: user-setup
+
+Name: passwd/user-fullname
+Template: passwd/user-fullname
+Owners: user-setup
+
+Name: passwd/user-uid
+Template: passwd/user-uid
+Owners: user-setup
+
+Name: passwd/username
+Template: passwd/username
+Owners: user-setup
+
+Name: passwd/username-bad
+Template: passwd/username-bad
+Owners: user-setup
+
+Name: passwd/username-reserved
+Template: passwd/username-reserved
+Owners: user-setup
+
+Name: samba-common/dhcp
+Template: samba-common/dhcp
+Value: false
+Owners: samba-common
+
+Name: samba-common/do_debconf
+Template: samba-common/do_debconf
+Value: true
+Owners: samba-common
+
+Name: samba-common/title
+Template: samba-common/title
+Owners: samba-common
+
+Name: samba-common/workgroup
+Template: samba-common/workgroup
+Value: WORKGROUP
+Owners: samba-common
 
 Name: tzdata/Areas
 Template: tzdata/Areas
@@ -235,4 +306,40 @@ Owners: ucf
 Name: ucf/title
 Template: ucf/title
 Owners: ucf
+
+Name: user-setup/allow-password-empty
+Template: user-setup/allow-password-empty
+Owners: user-setup
+
+Name: user-setup/allow-password-weak
+Template: user-setup/allow-password-weak
+Owners: user-setup
+
+Name: user-setup/encrypt-home
+Template: user-setup/encrypt-home
+Owners: user-setup
+
+Name: user-setup/encrypt-home-failed
+Template: user-setup/encrypt-home-failed
+Owners: user-setup
+
+Name: user-setup/force-encrypt-home
+Template: user-setup/force-encrypt-home
+Owners: user-setup
+
+Name: user-setup/password-empty
+Template: user-setup/password-empty
+Owners: user-setup
+
+Name: user-setup/password-mismatch
+Template: user-setup/password-mismatch
+Owners: user-setup
+
+Name: user-setup/password-weak
+Template: user-setup/password-weak
+Owners: user-setup
+
+Name: user-setup/progress/wipe-swap
+Template: user-setup/progress/wipe-swap
+Owners: user-setup
 
