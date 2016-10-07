@@ -1,28 +1,17 @@
 <?php
-	include("trconfig.php"); //holds globals for DB access
 	session_start();
+	include 'trfunctions.php';
 
 	//GLOBAL VARIABLE DECLARATIONS
-
 	$inputs = array(
 		"trUsername" => "",
 		"trPassword" => "");
-
 	$inputErrors = array(
 		"trUsername" => "",
 		"trPassword" => "");
-
 	//END VARIABLE DECLARATIONS
 
 
-	//Server input scrubber
-	function scrubInput($data)
-	 {
-    		$data = trim($data);
-    		$data = stripslashes($data);
-    		$data = htmlspecialchars($data);
-    		return $data;
-	 }
 
 	//Has the user supplied their username and password?
 	if (!empty($_SESSION["username"]))
@@ -40,7 +29,7 @@
 
 		if (empty($_REQUEST["trPassword"]))
          	 {
-                	$inputErrors["trPassword"] = "Please supply your password";
+                	$inputErrors["trPassword"] = "Please enter your password";
                 	$errFlag = 1;
          	 }
 
@@ -56,55 +45,16 @@
 	 }//END AJAX processing
 
 
-
-	function logIn($username, $password)
-	{
-		//Create our Database Handler, $dbh
-		$DB_HOST = "192.168.122.1"; //ionia's private IP
-		$DB_USERNAME = "testrig";
-		$DB_PASSWORD = "tinycats";
-		$DB_NAME = "testrig";
-		$dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
-
-
-		$stmnt = $dbh->prepare('SELECT tr_username, tr_password 
-					FROM customer 
-					WHERE tr_username = :username');
-		$stmnt->bindParam(':username', $username, PDO::PARAM_STR);
-		$stmnt->execute();
-		$queryResult = $stmnt->fetch(PDO::FETCH_ASSOC); //returns FALSE if empty result
-		if (!$queryResult) //Did we find a match to the submitted username?
-		 {
-			print "username not found";
-		 }
-		else //found a username match, time to see if the password is correct
-		 {
-			print $queryResult["tr_username"]. "<br>";
-			if (!password_verify($password, $queryResult["tr_password"]))
-			 {
-				print "given password and DB password do not match";
-			 }
-			else
-			 {
-				$_SESSION["username"] = $username;
-				print "You have now logged in";
-			 }
-		 }
-
-
-	}//END logIn
-
-
-	function buildLoginForm()
-	{
-
-
-
-	}
 ?>
 
 
 <html>
+<head>
+<link href="trstylesheet.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
 
 
 <body>
